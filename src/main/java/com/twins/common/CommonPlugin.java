@@ -30,6 +30,8 @@ public class CommonPlugin extends JavaPlugin {
 
     private UserFoundationService userService;
 
+    public static CommonPlugin INSTANCE;
+
     @Override
     public void onLoad() {
         PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
@@ -42,6 +44,8 @@ public class CommonPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        INSTANCE = this;
 
         saveDefaultConfig();
 
@@ -100,6 +104,10 @@ public class CommonPlugin extends JavaPlugin {
             asyncExecutor.shutdownNow();
         }
 
+    }
+
+    public UserFoundationService getUserService() {
+        return userService;
     }
 
 }
