@@ -26,7 +26,6 @@ repositories {
 dependencies {
     compileOnly("org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT")
     compileOnly(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("co.aikar:acf-bukkit:0.5.1-SNAPSHOT")
 }
 
 tasks.withType<JavaCompile> {
