@@ -45,6 +45,8 @@ public class CommonPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        INSTANCE = this;
+        
         saveDefaultConfig();
 
         Configuration lang = new Configuration(this, "lang", "lang.yml");
