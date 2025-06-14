@@ -1,0 +1,71 @@
+PT:
+  already-languageType: "§cVocê já está com o idioma em português!"
+  changed-languageType: "§aVocê alterou o seu idioma para português e por isso a alteração automática do idioma foi desativada. Caso queira ativá-la, basta digitar /lang force."
+  force-LanguageType: "§aAgora o idioma será alterado caso mude nas configurações do jogo."
+  force-languageType1: "§cAgora o idioma não será alterado caso mude nas configurações do jogo."
+  line0-languageType: "§e§lIDIOMA"
+  line1-languageType: "§f/lang force §8- §7(Se §aativado§7, o idioma será alterado caso mude nas config. do jogo)"
+
+EN:
+  already-languageType: "§cYou are already using English as your language!"
+  changed-languageType: "§aYou have changed your language to English, and as a result, automatic language change has been disabled. If you want to enable it again, simply type /lang force."
+  force-LanguageType: "§aNow the language will change if you modify it in the game settings."
+  force-languageType1: "§cNow the language will not change if you modify it in the game settings."
+  line0-languageType: "§e§lLANGUAGE"
+  line1-languageType: "§f/lang force §8- §7(If §aenabled§7, the language will change if modified in the game settings)"
+
+ES:
+  already-languageType: "§c¡Ya tienes el idioma configurado en español!"
+  changed-languageType: "§aHas cambiado tu idioma a español, por lo que la opción de cambio automático de idioma ha sido desactivada. Si deseas activarla de nuevo, solo tienes que escribir /lang force."
+  force-LanguageType: "§aA partir de ahora, el idioma cambiará automáticamente si lo modificas en la configuración del juego."
+  force-languageType1: "§cA partir de ahora, el idioma no cambiará automáticamente si lo modificas en la configuración del juego."
+  line0-languageType: "§e§lIDIOMA"
+  line1-languageType: "§f/lang force §8- §7(Si §aestá activado§7, el idioma cambiará automáticamente si lo modificas en la configuración del juego)"
+
+FR:
+  already-languageType: "§cVous avez déjà la langue configurée en français!"
+  changed-languageType: "§aVous avez changé votre langue en français, c'est pourquoi l'option de changement automatique de langue a été désactivée. Si vous souhaitez la réactiver, il vous suffit de taper /lang force."
+  force-LanguageType: "§aÀ partir de maintenant, la langue changera automatiquement si vous la modifiez dans les paramètres du jeu."
+  force-languageType1: "§cÀ partir de maintenant, la langue ne changera pas automatiquement si vous la modifiez dans les paramètres du jeu."
+  line0-languageType: "§e§lLANGUE"
+  line1-languageType: "§f/lang force §8- §7(Si §aactivé§7, la langue changera automatiquement si vous la modifiez dans les paramètres du jeu)"
+
+DE:
+  already-languageType: "§cDu hast die Sprache bereits auf Deutsch eingestellt!"
+  changed-languageType: "§aDu hast die Sprache auf Deutsch geändert, deshalb wurde die automatische Sprachänderung deaktiviert. Wenn du sie wieder aktivieren möchtest, gib einfach /lang force ein."
+  force-LanguageType: "§aAb jetzt wird die Sprache automatisch geändert, wenn du sie in den Spieleinstellungen änderst."
+  force-languageType1: "§cAb jetzt wird die Sprache nicht mehr automatisch geändert, wenn du sie in den Spieleinstellungen änderst."
+  line0-languageType: "§e§lSPRACHE"
+  line1-languageType: "§f/lang force §8- §7(Wenn §aaktiviert§7, wird die Sprache automatisch geändert, wenn du sie in den Spieleinstellungen änderst)"
+
+NL:
+  already-languageType: "§cJe hebt de taal al op Nederlands ingesteld!"
+  changed-languageType: "§aJe hebt de taal naar Nederlands veranderd, daarom is de automatische taalwijziging uitgeschakeld. Als je het opnieuw wilt inschakelen, typ dan /lang force."
+  force-LanguageType: "§aVanaf nu wordt de taal automatisch gewijzigd als je deze in de spelinstellingen wijzigt."
+  force-languageType1: "§cVanaf nu wordt de taal niet automatisch gewijzigd als je deze in de spelinstellingen wijzigt."
+  line0-languageType: "§e§lTAAL"
+  line1-languageType: "§f/lang force §8- §7(Als §aingeschakeld§7, wordt de taal automatisch gewijzigd als je deze in de spelinstellingen wijzigt)"
+
+IT:
+  already-languageType: "§cHai già impostato la lingua su italiano!"
+  changed-languageType: "§aHai cambiato la lingua in italiano, per questo motivo la modifica automatica della lingua è stata disattivata. Se vuoi riattivarla, digita /lang force."
+  force-LanguageType: "§aDa ora in poi, la lingua verrà modificata se cambi nelle impostazioni di gioco."
+  force-languageType1: "§cDa ora in poi, la lingua non verrà modificata se cambi nelle impostazioni di gioco."
+  line0-languageType: "§e§lLINGUA"
+  line1-languageType: "§f/lang force §8- §7(Se §aattivato§7, la lingua verrà modificata se cambi nelle impostazioni di gioco)"
+
+RU:
+  already-languageType: "§cВы уже установили язык на русский!"
+  changed-languageType: "§aВы изменили язык на русский, и поэтому автоматическое изменение языка было отключено. Чтобы включить его снова, введите /lang force."
+  force-LanguageType: "§aТеперь язык будет изменяться, если вы измените настройки игры."
+  force-languageType1: "§cТеперь язык не будет изменяться, если вы измените настройки игры."
+  line0-languageType: "§e§lЯЗЫК"
+  line1-languageType: "§f/lang force §8- §7(Если §aвключено§7, язык будет изменяться, если вы измените настройки игры)"
+
+LU:
+  already-languageType: "§cDir hutt de Sprooch scho op Lëtzebuergesch gesat!"
+  changed-languageType: "§aDu hues de Sprooch op Lëtzebuergesch geännert an dofir gouf d'Automatesch ännern vun der Sprooch deaktivitéiert. Fir et zréckzestellen, schreiw einfach /lang force."
+  force-LanguageType: "§aWéi d'Sprooch geännert gëtt, gëtt et um Zesummenhang mat den Astellungen am Spill ugepasst."
+  force-languageType1: "§cWéi d'Sprooch net geännert gëtt, wann d'Astellungen am Spill ugepasst ginn."
+  line0-languageType: "§e§lSPRËCH"
+  line1-languageType: "§f/lang force §8- §7(Wann §aaktivéiert§7, gëtt d'Ännerung vun der Sprooch un d'Astellungen vum Spill ugepasst)"
