@@ -11,11 +11,13 @@ public interface UserFoundationRepository {
 
     void updateNickname(UUID uuid, String nickname);
 
+    void updateLastLoginDate(UUID uuid);
+
     void insertOrUpdate(Collection<User> users);
 
     void insertOrUpdateOnDisable(Collection<User> users);
 
-    User findOne(UUID uuid) throws Exception;
+    User findOneAndUpdateIfPresent(UUID uuid) throws Exception;
 
     void insert(User user) throws Exception;
 

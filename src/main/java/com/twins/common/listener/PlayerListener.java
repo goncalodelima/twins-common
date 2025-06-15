@@ -25,6 +25,7 @@ public class PlayerListener implements Listener {
         User user = userService.getPendingUpdates().get(event.getUniqueId());
 
         if (user != null) {
+            userService.updateLastLoginDate(event.getUniqueId());
             userService.put(user);
             return;
         }

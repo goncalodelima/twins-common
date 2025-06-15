@@ -13,6 +13,8 @@ public interface UserFoundationService {
 
     void updateNickname(UUID uuid, String nickname);
 
+    void updateLastLoginDate(UUID uuid);
+
     void update(Collection<User> users);
 
     void updateOnDisable(Collection<User> users);

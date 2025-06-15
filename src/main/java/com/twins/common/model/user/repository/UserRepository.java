@@ -6,6 +6,7 @@ import com.twins.common.model.user.User;
 import com.twins.common.model.user.adapter.UserAdapter;
 import com.twins.common.util.UUIDConverter;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -33,7 +34,7 @@ public class UserRepository implements UserFoundationRepository {
     public void setup() {
         try (DatabaseExecutor executor = database.execute()) {
             executor
-                    .query("CREATE TABLE IF NOT EXISTS common_user (uuid BINARY(16) PRIMARY KEY, nickname VARCHAR(16), languageType CHAR(2), forceLanguage BOOLEAN)")
+                    .query("CREATE TABLE IF NOT EXISTS common_user (uuid BINARY(16) PRIMARY KEY, nickname VARCHAR(16), lastLoginDate DATETIME, languageType CHAR(2), forceLanguage BOOLEAN)")
                     .write();
         }
     }
@@ -53,16 +54,31 @@ public class UserRepository implements UserFoundationRepository {
     }
 
     @Override
+    public void updateLastLoginDate(UUID uuid) {
+        try (DatabaseExecutor executor = database.execute()) {
+            executor
+                    .query("UPDATE common_user SET lastLoginDate = ? WHERE uuid = ?")
+                    .write(statement -> {
+                        statement.set(1, LocalDateTime.now());
+                        statement.set(2, UUIDConverter.convert(uuid));
+                    });
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Failed to update common user lastLoginDate", e);
+        }
+    }
+
+    @Override
     public void insertOrUpdate(Collection<User> users) {
         CompletableFuture.runAsync(() -> {
             try (DatabaseExecutor executor = database.execute()) {
                 executor
-                        .query("INSERT INTO common_user (uuid, nickname, languageType, forceLanguage) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE nickname = VALUES(nickname), languageType = VALUES(languageType), forceLanguage = VALUES(forceLanguage)")
+                        .query("INSERT INTO common_user (uuid, nickname, lastLoginDate, languageType, forceLanguage) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE nickname = VALUES(nickname), lastLoginDate = VALUES(lastLoginDate), languageType = VALUES(languageType), forceLanguage = VALUES(forceLanguage)")
                         .batch(users, (user, statement) -> {
                             statement.set(1, UUIDConverter.convert(user.getUuid()));
                             statement.set(2, user.getNickname());
-                            statement.set(3, user.getLanguageType().name());
-                            statement.set(4, user.isForceLanguage());
+                            statement.set(3, user.getLastLoginDate());
+                            statement.set(4, user.getLanguageType().name());
+                            statement.set(5, user.isForceLanguage());
                         });
             } catch (Exception e) {
                 logger.log(Level.SEVERE, "Failed to insert or update common users data", e);
@@ -75,12 +91,13 @@ public class UserRepository implements UserFoundationRepository {
         try (DatabaseExecutor executor = database.execute()) {
 
             executor
-                    .query("INSERT INTO common_user (uuid, nickname, languageType, forceLanguage) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE nickname = VALUES(nickname), languageType = VALUES(languageType), forceLanguage = VALUES(forceLanguage)")
+                    .query("INSERT INTO common_user (uuid, nickname, lastLoginDate, languageType, forceLanguage) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE nickname = VALUES(nickname), lastLoginDate = VALUES(lastLoginDate), languageType = VALUES(languageType), forceLanguage = VALUES(forceLanguage)")
                     .batch(users, (user, statement) -> {
                         statement.set(1, UUIDConverter.convert(user.getUuid()));
                         statement.set(2, user.getNickname());
-                        statement.set(3, user.getLanguageType().name());
-                        statement.set(4, user.isForceLanguage());
+                        statement.set(3, user.getLastLoginDate());
+                        statement.set(4, user.getLanguageType().name());
+                        statement.set(5, user.isForceLanguage());
                     });
 
         } catch (Exception e) {
@@ -89,16 +106,27 @@ public class UserRepository implements UserFoundationRepository {
     }
 
     @Override
-    public User findOne(UUID uuid) {
+    public User findOneAndUpdateIfPresent(UUID uuid) {
         try (DatabaseExecutor executor = database.execute()) {
 
-            return executor
+            byte[] uuidBytes = UUIDConverter.convert(uuid);
+            User user = executor
                     .query("SELECT * from common_user where uuid = ?")
-                    .readOne(statement -> statement.set(1, UUIDConverter.convert(uuid)), adapter)
+                    .readOne(statement -> statement.set(1, uuidBytes), adapter)
                     .orElse(null);
 
+            if (user != null) {
+                executor
+                        .query("UPDATE common_user SET lastLoginDate = ? WHERE uuid = ?")
+                        .write(statement -> {
+                            statement.set(1, LocalDateTime.now());
+                            statement.set(2, uuidBytes);
+                        });
+            }
+
+            return user;
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Failed to retrieve common user data", e);
+            logger.log(Level.SEVERE, "Failed to retrieve or update common user data", e);
             throw e;
         }
     }
@@ -108,12 +136,13 @@ public class UserRepository implements UserFoundationRepository {
         try (DatabaseExecutor executor = database.execute()) {
 
             executor
-                    .query("INSERT INTO common_user (uuid, nickname, languageType, forceLanguage) VALUES (?,?,?,?)")
+                    .query("INSERT INTO common_user (uuid, nickname, lastLoginDate, languageType, forceLanguage) VALUES (?,?,?,?,?)")
                     .write(statement -> {
                         statement.set(1, UUIDConverter.convert(user.getUuid()));
                         statement.set(2, user.getNickname());
-                        statement.set(3, user.getLanguageType().name());
-                        statement.set(4, user.isForceLanguage());
+                        statement.set(3, user.getLastLoginDate());
+                        statement.set(4, user.getLanguageType().name());
+                        statement.set(5, user.isForceLanguage());
                     });
 
         } catch (Exception e) {

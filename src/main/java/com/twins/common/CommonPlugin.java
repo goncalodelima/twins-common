@@ -84,7 +84,6 @@ public class CommonPlugin extends JavaPlugin {
             userService.updateOnDisable(users.values());
         }
 
-        datacenter.close();
         PacketEvents.getAPI().terminate();
 
         asyncExecutor.shutdown();
@@ -103,6 +102,8 @@ public class CommonPlugin extends JavaPlugin {
             // (Re-)Cancel if current thread also interrupted
             asyncExecutor.shutdownNow();
         }
+
+        datacenter.close();
 
     }
 

@@ -1,5 +1,6 @@
 package com.twins.common.model.user;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -7,13 +8,15 @@ public class User {
 
     private final UUID uuid;
     private String nickname;
+    private LocalDateTime lastLoginDate;
     private LanguageType languageType;
     private boolean forceLanguage;
     private boolean online;
 
-    public User(UUID uuid, String nickname, LanguageType languageType, boolean forceLanguage) {
+    public User(UUID uuid, String nickname, LocalDateTime lastLoginDate, LanguageType languageType, boolean forceLanguage) {
         this.uuid = uuid;
         this.nickname = nickname;
+        this.lastLoginDate = lastLoginDate;
         this.languageType = languageType;
         this.forceLanguage = forceLanguage;
     }
@@ -28,6 +31,14 @@ public class User {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public LocalDateTime getLastLoginDate() {
+        return lastLoginDate;
+    }
+
+    public void setLastLoginDate(LocalDateTime lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
     }
 
     public LanguageType getLanguageType() {

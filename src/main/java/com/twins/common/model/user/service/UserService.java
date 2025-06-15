@@ -7,6 +7,7 @@ import com.twins.common.model.user.repository.UserFoundationRepository;
 import com.twins.common.model.user.repository.UserRepository;
 
 import javax.annotation.Nullable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Map;
 import java.util.UUID;
@@ -43,6 +44,11 @@ public class UserService implements UserFoundationService {
     }
 
     @Override
+    public void updateLastLoginDate(UUID uuid) {
+        userRepository.updateLastLoginDate(uuid);
+    }
+
+    @Override
     public void update(Collection<User> users) {
         userRepository.insertOrUpdate(users);
     }
@@ -69,11 +75,11 @@ public class UserService implements UserFoundationService {
 
         try {
 
-            User userRepositoryOne = userRepository.findOne(uuid);
+            User userRepositoryOne = userRepository.findOneAndUpdateIfPresent(uuid);
 
             if (userRepositoryOne == null) {
 
-                userRepositoryOne = new User(uuid, nickname, LanguageType.EN, true);
+                userRepositoryOne = new User(uuid, nickname, LocalDateTime.now(), LanguageType.EN, true);
 
                 try {
                     userRepository.insert(userRepositoryOne);
