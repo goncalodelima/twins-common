@@ -1,0 +1,1 @@
+Plugin used as a dependency by all plugins to ensure that the reading of player names corresponding to a UUID is synchronized across plugins. Additionally, it is designed to obtain the player’s language in order to display messages accordingly in all plugins. Scalability and performance are guaranteed.
